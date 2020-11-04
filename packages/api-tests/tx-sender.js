@@ -151,6 +151,21 @@ class TxSender {
     this.expectedBalances[this.mainTxAssetId] += this.mainTxAmount * this.parallel;
   }
 
+  async runEthFaucet() {
+    this.harness.comment(`Faucet some ${this.Ethtitle} to the new wallet.`);
+    let faucetResult;
+    try {
+      this.faucetResult = await this.faucet[this.faucetEthMethod](this.wallet.address, this.ethAmount * this.parallel, this.harness.comment);
+    }
+    catch (err) {
+      partials.tErrorFail(this.harness, err, `Faucetting some ${this.Ethtitle} to the new wallet failed.`);
+      throw err;
+    }
+    this.harness.comment(testenv.getTxEtherscanUrl(this.wallet.protocol, this.faucetResult.transactionHash));
+    inspect('Faucet result:', this.faucetEthMethod);
+    this.expectedBalances[this.mainTxAssetId] += this.mainTxAmount * this.parallel;
+  }
+
   async setUpWebhookMatcherForFaucetTxTransfer() {
     this.faucetTxTransferWebhookRecording.addMatcher(this.transferObservedWebhookMatcherWrapper((t, webhookPayload) => {
       if (webhookPayload.data.txhash != this.faucetResult.transactionHash) {
@@ -364,6 +379,7 @@ class TxSender {
       await this.setUpWebhookRecordings();
       await this.compileTxData();
       await this.runFaucet();
+      await this.runEthFaucet(); //added to accomplish no funding based workflow
       await this.setUpWebhookMatcherForFaucetTxTransfer();
       await this.waitForFaucetTxTransferWebhook();
       await this.checkBalances();

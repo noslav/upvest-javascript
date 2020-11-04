@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/toknapp/js-api-clients#readme",
   "dependencies": {
+    "@upvest/api-tests": "0.0.30",
     "lerna": "^3.22.1",
     "tape": "^5.0.1"
   },
