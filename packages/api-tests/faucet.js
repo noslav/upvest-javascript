@@ -34,10 +34,10 @@ class EthereumAndErc20Faucet {
       if (! this.egs) {
         this.egs = new EthGasStation({apiKey:this.config.ethGasStationApiKey});
       }
-      return BigInt((await this.egs.getGasPrice(24)).min) * BigInt(10);
+      return BigInt((await this.egs.getGasPrice(24)).min);
     }
     else {
-      return BigInt(await this.web3.eth.getGasPrice()) * BigInt(10);
+      return BigInt(await this.web3.eth.getGasPrice());
     }
   }
 

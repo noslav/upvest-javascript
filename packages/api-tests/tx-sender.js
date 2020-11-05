@@ -379,7 +379,7 @@ class TxSender {
       await this.setUpWebhookRecordings();
       await this.compileTxData();
       await this.runFaucet();
-      await this.runEthFaucet(); //added to accomplish no funding based workflow
+      await this.runEthFaucet(); //added to accomplish no funding based workflow, remove after funding is implemented
       await this.setUpWebhookMatcherForFaucetTxTransfer();
       await this.waitForFaucetTxTransferWebhook();
       await this.checkBalances();
