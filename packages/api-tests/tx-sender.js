@@ -199,9 +199,9 @@ class TxSender {
     }));
   }
 
-  async waitForFaucetTxTransferWebhook() {
-    return await this.waitForWebhooksToBeMatched('faucetTxTransferWebhookRecording');
-  }
+  // async waitForFaucetTxTransferWebhook() {
+  //   return await this.waitForWebhooksToBeMatched('faucetTxTransferWebhookRecording');
+  // }
 
   sendTx() {
     return this.api.transactions.create(
@@ -371,29 +371,29 @@ class TxSender {
 
   async run() {
     try {
-      await this.createDynamicWebhooks();
+      //await this.createDynamicWebhooks();
       await this.createUser();
       await this.setUpAPICreds();
       await this.createWallet();
       await this.checkBalances();
-      await this.setUpWebhookRecordings();
+      //await this.setUpWebhookRecordings();
       await this.compileTxData();
-      await this.runFaucet();
       await this.runEthFaucet(); //added to accomplish no funding based workflow, remove after funding is implemented
-      await this.setUpWebhookMatcherForFaucetTxTransfer();
-      await this.waitForFaucetTxTransferWebhook();
+      await this.runFaucet();
+      //await this.setUpWebhookMatcherForFaucetTxTransfer();
+      //await this.waitForFaucetTxTransferWebhook();
       await this.checkBalances();
       await this.sendAllTxs();
-      await this.setUpWebhookMatchersForMainTxProcessed();
-      await this.setUpWebhookMatchersForMainTxTransfer();
-      await this.waitForMainTxProcessedWebhooksToBeMatched();
-      await this.waitForMainTxTransferWebhooksToBeMatched();
-      await this.stopWebhookRecordings();
+      //await this.setUpWebhookMatchersForMainTxProcessed();
+      //await this.setUpWebhookMatchersForMainTxTransfer();
+      //await this.waitForMainTxProcessedWebhooksToBeMatched();
+      //await this.waitForMainTxTransferWebhooksToBeMatched();
+      //await this.stopWebhookRecordings();
       await this.retrieveSucessfulTxs();
       await this.checkBalances();
     }
     finally {
-      await this.deleteDynamicWebhooks();
+      //faucetEthMethodawait this.deleteDynamicWebhooks();
       this.harness.end();
     }
   }
