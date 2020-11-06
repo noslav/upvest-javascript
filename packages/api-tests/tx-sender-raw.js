@@ -15,6 +15,9 @@ class TxSenderRaw extends TxSender {
     this.mainTxAmount = BigInt(this.faucetCfg.erc20.amount);
     this.gasLimitByteCode = BigInt(this.faucetCfg.erc20.gasLimit);
     this.faucetMethod = 'faucetErc20';
+    this.Ethtitle = `Eth`;
+    this.faucetEthMethod = `faucetEth`;
+    this.ethAmount = BigInt(this.faucetCfg.eth.amount);
   }
 
   async compileTxData() {
