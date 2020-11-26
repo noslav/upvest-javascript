@@ -104,7 +104,7 @@ class TxSender {
     this.gasLimit = this.faucet.GAS_LIMIT_TRANSACTION + this.gasLimitByteCode;
     this.gasPrice = BigInt(await this.faucet.getGasPrice());
     this.fee = this.gasPrice * this.gasLimit;
-    this.fund = true;
+    this.fund = false;
     await this.setEffectiveFeeCfg();
   }
 

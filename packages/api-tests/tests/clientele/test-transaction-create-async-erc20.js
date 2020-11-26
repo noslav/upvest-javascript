@@ -7,12 +7,12 @@ const { test } = testenv;
 async function main() {
   const feeCfgs = [
     {},
-    { fee: 'default' },
-    { gasLimit: 'default' },
+    { fee: 'default'},
+    { gasLimit: 'default'},
     { gasPrice: 'default' },
     { gasPrice: 'default', gasLimit: 'default' },
-    { gasPrice: 'fastest' },
-    { gasPrice: 'fastest', gasLimit: 'default' },
+    { gasPrice: 'fastest'},
+    { gasPrice: 'fastest', gasLimit: 'default'},
   ];
   for (const feeCfg of feeCfgs) {
     test(`Testing async ERC20 transactions.create() with feecfg: ${JSON.stringify(feeCfg)}`, async t => {

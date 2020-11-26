@@ -4,3 +4,4 @@ package-lock.json
 yarn.lock
 *.log
 results/*
+packages/api-tests/example.test_config.json
