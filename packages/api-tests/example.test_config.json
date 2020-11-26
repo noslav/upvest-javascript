@@ -64,7 +64,7 @@
         "privateKeyWif": "cQnspicuousPrivateKeyConspicuousPrivateKey1zzdJnRrQm"
       },
       "btc": {
-        "amount": 1e5,
+        "amount": 100000,
         "assetId": "a3c18f74-935e-5d75-bd3c-ce0fb5464414"
       }
     }
